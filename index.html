@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ton Farkı</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🎨 Ton Farkı</h1>
+    <p>Orijinal fotoğrafı ve düzenlenmiş hâlini koy. Bir yüze tıkla. Rengin ne kadar değiştiğini sayıyla göreyim.</p>
+  </header>
+
+  <main>
+    <section class="resimler">
+      <div class="ust">
+        <button id="ornek">Örnek koy</button>
+        <button id="temizle" class="ikinci">Noktaları sil</button>
+        <label class="yaricap">Kutu boyu <input id="yaricap" type="range" min="2" max="20" value="6"> <span id="yaricapYazi">13 px</span></label>
+      </div>
+      <div class="ikili">
+        <figure>
+          <figcaption>
+            <b>Önce</b> <span>orijinal</span>
+            <label class="dosya">Resim seç<input id="dosyaA" type="file" accept="image/*"></label>
+          </figcaption>
+          <div class="tuval" id="kutuA"><canvas id="tuvalA"></canvas><p class="bos">Orijinal resmi buraya bırak</p></div>
+        </figure>
+        <figure>
+          <figcaption>
+            <b>Sonra</b> <span>düzenlenmiş</span>
+            <label class="dosya">Resim seç<input id="dosyaB" type="file" accept="image/*"></label>
+          </figcaption>
+          <div class="tuval" id="kutuB"><canvas id="tuvalB"></canvas><canvas id="harita" hidden></canvas><p class="bos">Düzenlenmiş resmi buraya bırak</p></div>
+        </figure>
+      </div>
+      <p id="uyari" class="uyari" hidden></p>
+      <label class="harita-dugme"><input id="haritaAc" type="checkbox"> "Sonra" yerine açıklık farkı haritasını göster <span class="lejant-satir"><b style="background:var(--gold)"></b>açılmış <b style="background:var(--teal)"></b>koyulaşmış · renk ne kadar parlaksa fark o kadar büyük</span></label>
+      <p class="not">Resimlerim bu cihazdan çıkmıyor. Hiçbir sunucuya gönderilmiyor.</p>
+    </section>
+
+    <section class="sonuc">
+      <div class="kart" id="genel">
+        <h2>Bütün resim</h2>
+        <p class="sessiz">İki resmi koyunca burada genel fark çıkacak.</p>
+      </div>
+      <div class="kart">
+        <h2>Noktalar</h2>
+        <p class="sessiz" id="noktaBos">Bir resimde yüze ya da cilde tıkla. Aynı yer iki resimde de ölçülür.</p>
+        <ol id="noktalar"></ol>
+      </div>
+      <details class="kart">
+        <summary>Bu sayılar ne demek?</summary>
+        <p><b>ΔE</b> iki rengin insan gözüne ne kadar farklı göründüğü. 2'nin altını çoğu kişi fark etmez, 10'un üstü bambaşka bir renk.</p>
+        <p><b>L</b> açıklık (0 siyah, 100 beyaz). Artıysa resim o noktada açılmış.</p>
+        <p><b>Ten açısı (ITA°)</b> cilt renginin açıklığını ölçen bir açı. Gruplar: çok açık, açık, orta, buğday, esmer, koyu. Işık ve kamera bu sayıyı değiştirir; kişinin gerçek rengini söylemez, sadece iki resmi karşılaştırır.</p>
+      </details>
+    </section>
+  </main>
+
+  <script type="module" src="app.mjs"></script>
+</body>
+</html>
